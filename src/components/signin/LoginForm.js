@@ -1,9 +1,11 @@
-import * as React from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-export default function LoginForm() {
+
+export default function LoginForm({loginUser,createUser,setLoginData,loginData}) {
+
   return (
     <Box
       component="form"
@@ -11,12 +13,28 @@ export default function LoginForm() {
       noValidate
       autoComplete="off"
     >
-      <TextField  label="email" variant="outlined" />
-      <TextField  label="password" variant="outlined" />
-      {/* <button type='button' className='border border-indigo-600 rounded  p-2' >Login </button>*/}
-      <Button variant="contained" className='text-center' color="success">
-        Login
-      </Button>
+      <TextField  
+      label="email" 
+      variant="outlined" 
+      name='email'
+      onChange={e=>{
+          setLoginData(pre=>({
+           ...pre,
+           email:e.target.value
+          }))}}
+       />
+      <TextField  
+      label="password" 
+      variant="outlined" 
+      name='password'
+      onChange={e=>{
+        setLoginData(pre=>({
+         ...pre,
+         password:e.target.value
+        }))}}
+      />     
+      <Button variant="outlined" className='text-center' color="success" onClick={createUser} >CreateUser</Button>
+      <Button variant="contained" className='text-center' color="success" onClick={loginUser} >Login</Button>
     </Box>
   );
 }

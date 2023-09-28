@@ -26,43 +26,8 @@ const CreatePost = () => {
   const [showUploadBtn, setShowUploadBtn] = useState(false)
 
   const scenesCollectionRef = collection(db, "Post")
-
-
-  // Store the information to the firebase database
-
-
-
-  // const handleUploadToStorage = async () => {
-
-  //   const imageRef = ref(storage, `images/${`feature-image` + (Math.floor(Math.random() * (10000000)))}`)
-  //   const uploadTask = uploadBytesResumable(imageRef, imageUpload)
-  //   try {
-  //     await uploadBytes(imageRef, imageUpload)
-  //     uploadTask.on("state_changed", (snapshot) => {
-  //       // const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-
-  //     }, (err) => console.log(err),
-  //       () => {
-  //         getDownloadURL(uploadTask.snapshot.ref)
-  //           .then(url => {
-  //             setFeatureImage(url)
-  //             console.log(url)
-  //           })
-  //       }
-  //     )
-
-  //   }
-  //   catch (error) {
-  //     console.log(error)
-  //   }
-
-  //   setUploading(false)
-  //   setShowUploadBtn(false)
-  // }
-  const handlePublish = async () => {
-   
+  const handlePublish = async () => {  
     try {
-
       await addDoc(scenesCollectionRef, {
         link: link+'-'+1,
         title,
@@ -72,9 +37,7 @@ const CreatePost = () => {
         createdAt: serverTimestamp(),
         featureImage
       });
-      setPublishing(false)
-  
-      
+      setPublishing(false)    
     }
     catch (error) {
       console.log(error)
