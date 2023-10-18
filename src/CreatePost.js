@@ -62,7 +62,6 @@ const CreatePost = () => {
   const handlePublish = async () => {
    
     try {
-
       await addDoc(scenesCollectionRef, {
         link: link+'-'+1,
         title,
@@ -72,9 +71,7 @@ const CreatePost = () => {
         createdAt: serverTimestamp(),
         featureImage
       });
-      setPublishing(false)
-  
-      
+      setPublishing(false)    
     }
     catch (error) {
       console.log(error)
